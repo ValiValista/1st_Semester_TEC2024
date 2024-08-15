@@ -1,6 +1,6 @@
 """
 Made by Viri V. #A01647566
-Problem: Calculate the hipotenuse of a right side triangle from 2 sides
+Problem: Calculate the hypotenuse of a right side triangle from 2 sides
 Input: 
     2 sides
 Output: 

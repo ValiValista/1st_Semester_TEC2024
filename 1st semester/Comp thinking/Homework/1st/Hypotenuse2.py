@@ -1,6 +1,6 @@
 """
 Made by Viri V. #A01647566
-Problem: Calculate the hipotenuse from a given side and angle
+Problem: Calculate the hypotenuse from a given side and angle
 Input: 
     Side and angle
 Output: 
