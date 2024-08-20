@@ -1,10 +1,12 @@
 """
+E. Velazquez A01647566
+
 Challenge N.1:
     Age.
     Depending on the age that the user inserts you classify them as 
     baby, child, teen, young, adult, adult, old adult, corpse, mummy, dust
 
-
+This program takes an age as an input and outputs an age class
 
 Inputs: 
     Age
@@ -14,6 +16,7 @@ Outputs:
 Process:
 
 """
+print("This program takes an age as an input and outputs an age class")
 age = float(input("What is your age: "))
 
 if age <=5: 

@@ -1,9 +1,12 @@
 """
+E. Velazquez A01647566
+
 Challenge N.1:
     Age.
     Depending on the age that the user inserts you classify them as 
     baby, child, teen, young, adult, adult, old adult, corpse, mummy, dust
 
+This program takes scores on exams and project and outputs a pass fail status
 
 
 Inputs: 
@@ -14,7 +17,8 @@ Outputs:
 Process:
 
 """
-age = float(input("What is your score in the examen: "))
+print("This program takes scores on exams and project and outputs a pass fail status")
+age = float(input("What is your score in the exam: "))
 age2 = float(input("What is your score in the project: "))
 
 if age and age2 >=80: 
