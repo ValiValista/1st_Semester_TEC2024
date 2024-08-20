@@ -16,4 +16,4 @@ elif a == 0 and b >0:
     print(f"x = {x}")
 else:
     x = (-(b)+math.sqrt(b**2-4*a*c))/2
-    print(f"x² = {x}")
+    print(f"x1 = {x}, x2= -{x}")
