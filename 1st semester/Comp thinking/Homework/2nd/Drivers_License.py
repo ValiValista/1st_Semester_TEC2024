@@ -27,7 +27,15 @@ Yes
 
 """
 
-
-print("This program ask you for your age and if you already have an official identification\n")
+print("To get a driver's license you need to be over 18 and have an official identification")
+print("This program ask you for your age and if you have an official identification\n")
 age = int(input("Please input a whole number 0-99+ for your age: "))
 has_id = input("Please input \"y\" or \"n\" ")
+
+if age > 18:
+    if has_id == "y":
+        print("Yes")
+    else:
+        print("You cannot get a driver's license, you are missing an official identification")
+else:
+    print("You cannot get a driver's license, get older")
