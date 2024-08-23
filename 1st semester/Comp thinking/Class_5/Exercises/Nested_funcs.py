@@ -6,6 +6,8 @@ import random
 
 def main():
     while True:
+        #Function definition section
+        #Calc function
         def addition(func_num_1_add, func_num_2_add):
             func_num_added = func_num_1_add + func_num_2_add
             return  func_num_added
@@ -29,7 +31,9 @@ def main():
         def sqrt(func_num_1_sqrt):
             func_num_sqrt = math.sqrt(func_num_1_sqrt)
             return  func_num_sqrt
-            
+        #End of calc functions
+        
+        #End of functions definition section
         print("""
             Press 1 to launch calculator
             Press 2 to launch Hello World
