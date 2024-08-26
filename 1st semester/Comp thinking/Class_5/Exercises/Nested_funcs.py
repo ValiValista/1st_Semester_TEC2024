@@ -116,11 +116,9 @@ def calc():
 
 def hello_world():
     print("\nHello World\n")   
-    
+
 def hell_in_earth():
     print("\nUnavailable, earth is beauty\n")
-
-
-           
+  
 
 main()
