@@ -71,12 +71,13 @@ def calc():
         4. Division
         5. Exponentiation
         6. Square root
+        7. Exit
         """)
         
         menu_in_calc = int(input(f"\n"))
         
         if menu_in_calc == 1:
-            add_num1 = float(input("\nInput first number: "))
+            add_num1 = float(input("\nInput first number: ")) 
             add_num2 = float(input("Input second number: "))
             num_added = addition(add_num1, add_num2)
             print(f"\n{add_num1} + {add_num2} = {num_added}")
@@ -110,6 +111,8 @@ def calc():
             sqrt_num1 = float(input("\nInput number: "))
             num_sqrt = sqrt(sqrt_num1)
             print(f"\nSquare of {sqrt_num1} = {num_sqrt}")
+        elif menu_in_calc == 7:
+            break
             
         else:
             print("Error")
