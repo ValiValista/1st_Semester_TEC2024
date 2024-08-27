@@ -23,6 +23,9 @@ def exponentiation(func_num_1_exp, func_num_2_exp):
     func_num_exp = func_num_1_exp ** func_num_2_exp
     return  func_num_exp
 
+def sqrt(func_num_1_sqrt):
+    func_num_sqrt = math.sqrt(func_num_1_sqrt)
+    return  func_num_sqrt
 #main
 def main():
     #main loop
