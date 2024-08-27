@@ -1,6 +1,7 @@
 # Made by Vasco A01647566
 
 #Libraries
+import math
 
 #Function definition
 def addition(func_num_1_add, func_num_2_add):
