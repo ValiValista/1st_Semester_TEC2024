@@ -1,7 +1,7 @@
 #A01647566
-def main():
+def sum():
     suma = 0
-    counter = 0
+    counter = 1
     while suma <= 1000:
         a = int(input("\nInput a number: "))
         suma += a
@@ -10,4 +10,10 @@ def main():
         
     print(f"\nThe sum is {suma}")    
 
+def main():
+    print(f"""
+This program displays the total of the sum, and the number of quantities that were added.
+""")
+    sum()
 main()
+    
