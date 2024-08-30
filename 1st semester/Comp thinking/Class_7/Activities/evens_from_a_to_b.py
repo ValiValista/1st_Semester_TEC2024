@@ -7,9 +7,9 @@ def main():
     a = int(input("Input number: "))
     b = int(input("Input number: "))
     while check_a_lessthan_b(a,b):
-        a += 1
         if a % 2 == 0:
             print(a)
+            a += 1
         else:
-            pass
+            a += 1
 main()
