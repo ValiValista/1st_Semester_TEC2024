@@ -9,7 +9,5 @@ def main():
     while check_a_lessthan_b(a,b):
         if a % 2 == 0:
             print(a)
-            a += 1
-        else:
-            a += 1
+        a += 1
 main()
