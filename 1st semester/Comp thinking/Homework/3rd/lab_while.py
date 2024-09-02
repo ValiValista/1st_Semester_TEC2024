@@ -8,7 +8,7 @@ from time import sleep
 
 def error():
     print("Error, exception handled")
-    sleep(2)
+    sleep(1)
     main()
 
 def sqrt_func():
