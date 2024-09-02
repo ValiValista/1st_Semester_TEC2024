@@ -129,7 +129,6 @@ def s_p_m():
 def fibonacci():
     print("Fibonacci up to n")
     a, b, n = 0, 1, int(input("Enter a number: "))
-
     while b <= n:
         print(b)
         a, b = b, a + b
