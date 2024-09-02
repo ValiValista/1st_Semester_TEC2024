@@ -119,7 +119,6 @@ def s_p_m():
             if s_p_m_number > stored_m_number:
                 stored_m_number = s_p_m_number
         elif s_p_m_number <0:
-            greatest = 0
             average = sumof / count
             print(f"The sum is {sumof}, the greatest number was {stored_m_number}, and the average is {average}")
             sleep(1)
