@@ -44,10 +44,12 @@ Don't forget!
         If menus are used: used While True: and sys.exit()
 
 """
+#Libraries
 from sys import exit
 from time import sleep
 from random import randint
 
+#Error handling function
 def error(): #This function handles errors by throwing you back into the main menu :P
     print("Error handled")
     sleep(1)
@@ -147,10 +149,12 @@ def fun_type_o_finish(func_var_type_o_finish):
         sleep(1)
         error()
 
+#Raffle is incredibly short and easy, it does not store values as it does not need to
 def fun_raffle():
     print(f"You have won a {randint(10,20)}% discount if you choose to hire our services today")
     sleep(1)
 
+#Main mostly just calls other functions and works as the topmost menu
 def main():
 
     while True:
