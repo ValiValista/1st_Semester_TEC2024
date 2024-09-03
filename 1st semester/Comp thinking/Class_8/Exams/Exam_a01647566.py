@@ -1,4 +1,6 @@
 """
+Made by Vasco: A01647566
+
 Problem guideline:
 
 Inputs:
@@ -16,6 +18,5 @@ Dont forget!
     Put everything into functions and call them in main
 
         If menus are used: used While True: and sys.exit()
-
 
 """
