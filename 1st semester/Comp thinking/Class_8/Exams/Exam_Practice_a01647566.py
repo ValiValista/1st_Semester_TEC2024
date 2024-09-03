@@ -19,7 +19,7 @@ Process Constants:
 Outputs: Costo por la transportacion
 
 
-Dont forget!
+Don't forget!
     Check if greater than 0
     Convert to int, float, str, in their respective circumstances
     Put everything into functions and call them in main
