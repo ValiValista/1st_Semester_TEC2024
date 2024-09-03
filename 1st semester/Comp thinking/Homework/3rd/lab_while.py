@@ -163,7 +163,7 @@ def perfect():
     if number == sum:
         print("Perfection")
     else:
-        error()
+        print("Not perfect")
     sleep(1)
     main()
 
