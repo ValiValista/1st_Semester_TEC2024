@@ -22,16 +22,29 @@ def generate_unique_question(level, asked_questions):
             return question, result
 
 
+# Function to get a valid integer input
+def get_valid_input(prompt):
+    while True:
+        try:
+            answer = int(input(prompt))
+            if answer >= 0:
+                return answer
+            else:
+                print("Please enter a non-negative number.")
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+
+
 # Function to ask a math question and check the answer
 def ask_question(question, result):
     a, b, operator = question
 
     if operator == '+':
-        answer = int(input(f"What is {a} + {b}? "))
+        answer = get_valid_input(f"What is {a} + {b}? ")
     elif operator == '-':
-        answer = int(input(f"What is {a} - {b}? "))
+        answer = get_valid_input(f"What is {a} - {b}? ")
     elif operator == '*':
-        answer = int(input(f"What is {a} * {b}? "))
+        answer = get_valid_input(f"What is {a} * {b}? ")
 
     return answer == result
 
@@ -54,7 +67,8 @@ def play_level(level):
                 else:
                     print("Wrong answer! Try again. You must get it right to proceed.")
         else:
-            if ask_question(*generate_unique_question(level, asked_questions)):
+            question, result = generate_unique_question(level, asked_questions)
+            if ask_question(question, result):
                 print("Correct!")
                 correct_answers += 1
             else:
@@ -101,7 +115,7 @@ def view_highscores(highscores):
 
 
 # Main menu
-def main():
+def main_menu():
     highscores = [0, 0, 0]  # Placeholder for top 3 high scores
 
     while True:  # Main loop to keep the game running
@@ -151,4 +165,4 @@ def main():
 
 
 # Run the game
-main()
+main_menu()
