@@ -125,6 +125,26 @@ void gira_derecha(){
 
   //Serial.println("Derecha");
 }
+void izquierda(){
+  digitalWrite(H_Bridge_IN1, LOW); //Motor 1 low on side 1
+  digitalWrite(H_Bridge_IN2, LOW); //Motor 1 high on side 2
+
+  digitalWrite(H_Bridge_IN3, HIGH); //Motor 2 low on side 1
+  digitalWrite(H_Bridge_IN4, LOW); //Motor 2 low on side 2
+
+  //Serial.println("Izquierda");
+
+}
+void derecha(){
+  digitalWrite(H_Bridge_IN1, HIGH); //Motor 1 low on side 1
+  digitalWrite(H_Bridge_IN2, LOW); //Motor 1 low on side 2
+
+  digitalWrite(H_Bridge_IN3, LOW); //Motor 2 low on side 1
+  digitalWrite(H_Bridge_IN4, LOW); //Motor 2 high on side 2
+
+  //Serial.println("Derecha");
+}
+
 
 // void motors_manual(char instruction_movement){
 //   if(instruction_movement == 'w') //fowards
@@ -173,15 +193,13 @@ void main_logic(){
 
   else if ((ultra1() >=30) && edge_state){
     gira_izquierda();
-    delay(100);
-    gira_derecha();
-    delay(100);
+    izquierda();
     Serial.println("Searching");
   }
 
   else if (!edge_state){
-    delay(750);
-    gira_izquierda();   
+    gira_izquierda();
+    delay(150);
     adelante();
     Serial.println("On edge");
   }
