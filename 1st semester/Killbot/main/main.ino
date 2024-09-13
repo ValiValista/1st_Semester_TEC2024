@@ -73,8 +73,8 @@ const int H_Bridge_IN4 = 15;
 // }
 
 int ultra1() {
-  const int delay_ultrasonics_ms = 10;
-  const int delay_ultrasonics_us = 10;
+  const int delay_ultrasonics_ms = 5;
+  const int delay_ultrasonics_us = 5;
   long trigger_1_US;
   int  distance_1_US;
   digitalWrite(UltraSonic_1_TRIGGER_pin, HIGH);
@@ -90,8 +90,8 @@ int ultra1() {
   return distance_1_US;
 }
 int ultra2() {
-  const int delay_ultrasonics_ms = 10;
-  const int delay_ultrasonics_us = 10;
+  const int delay_ultrasonics_ms = 5;
+  const int delay_ultrasonics_us = 5;
   long trigger_2_US;
   int  distance_2_US;
   digitalWrite(UltraSonic_2_TRIGGER_pin, HIGH);
@@ -107,8 +107,8 @@ int ultra2() {
   return distance_2_US;
 }
 int ultra3() {
-  const int delay_ultrasonics_ms = 10;
-  const int delay_ultrasonics_us = 10;
+  const int delay_ultrasonics_ms = 5;
+  const int delay_ultrasonics_us = 5;
   long trigger_2_US;
   int  distance_2_US;
   digitalWrite(UltraSonic_2_TRIGGER_pin, HIGH);
@@ -239,13 +239,11 @@ void main_logic(){
 
   else if ((ultra1() >=30) && (ultra2() <=30)&& edge_state){
     gira_derecha();
-    delay(250);
     Serial.println("Searching Right");
   }
 
   else if ((ultra1() >=30) && (ultra3() <=30)&& edge_state){
     gira_izquierda();
-    delay(250);
     Serial.println("Searching Left");
   }
   else if (!edge_state){
