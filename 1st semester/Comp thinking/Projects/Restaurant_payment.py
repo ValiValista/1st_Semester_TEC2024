@@ -16,40 +16,31 @@ def valid_input(prompt):
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
-def menu_adult(fun_menu_stored):
-    fun_menu_prices = [25,20,5,1]
+def menu_adult():
     print("""
 Our menu for the day is:
 1.   Pasta: 25 pesos 
 2.   Sandwich: 20 pesos 
 3.   Carlos V: 5 pesos
 4.   Water: 1 peso for the cup
+Please enter an amount per product, leave as 0 if you do not intend to buy that product
 """)
-    fun_menu_selected = valid_input("Please select as many menu items as you want, end by inputting \"END\"")
-    if fun_menu_selected > 0:
-        pasta_amount = fun_menu_prices.count(1)
-        sandwich_amount = fun_menu_prices.count(2)
-        chocolate_amount = fun_menu_prices.count(3)
-        water_amount = fun_menu_prices.count(4)
-        print(pasta_amount, sandwich_amount, chocolate_amount, water_amount) #debug pourposes
-    elif fun_menu_selected == "END":
-        pass
-
-
-
-
-
 
 def menu_child():
     pass
+
 def payment_process():
     pass
+
 def recharge_giftcard():
     pass
+
 def auth_giftcard():
     pass
+
 def purchase_menu():
     pass
+
 def main_menu():
     menu_adult_selection = []
     key_men = valid_input("""
