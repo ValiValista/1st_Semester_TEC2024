@@ -61,13 +61,13 @@ def fun_remodel_normal(fun_sqr_mtr):
     fun1_f_price = fun_sqr_mtr * 2000
     return fun1_f_price
 def fun_remodel_luxury(fun_sqr_mtr):
-    fun2_f_price = fun_sqr_mtr * (2000 + 2000 * .15)
+    fun2_f_price = fun_sqr_mtr * (2000 * 1.15)
     return fun2_f_price
 def fun_construct_normal(fun_sqr_mtr):
     fun3_f_price = fun_sqr_mtr * 4000
     return fun3_f_price
 def fun_construct_luxury(fun_sqr_mtr):
-    fun4_f_price = fun_sqr_mtr * (4000 + 4000 * .30)
+    fun4_f_price = fun_sqr_mtr * (4000 * 1.30)
     return fun4_f_price
 
 def fun_cotiza(): #This function handles the first menu option
