@@ -17,14 +17,26 @@ def valid_input(prompt):
             print("Invalid input. Please enter a valid number.")
 
 def menu_adult():
+    purchases_menu_adult = []
     print("""
 Our menu for the day is:
 1.   Pasta: 25 pesos 
 2.   Sandwich: 20 pesos 
 3.   Carlos V: 5 pesos
 4.   Water: 1 peso for the cup
+5.   Stop
 Please enter an amount per product, leave as 0 if you do not intend to buy that product
 """)
+    while True:
+        selection_menu_adult = valid_input("Please select an item: ")
+        if selection_menu_adult <5:
+            purchases_menu_adult.append(selection_menu_adult)
+            print(f"Your cart has ")
+        elif selection_menu_adult == 5:
+            return purchases_menu_adult
+        else:
+            print("Invalid input")
+
 
 def menu_child():
     pass
@@ -55,13 +67,13 @@ Please input a menu option:
 """)
 
     if key_men == 1:
-        menu_adult_selection = menu_adult([])
+        menu_adult()
 
     elif key_men == 2:
         menu_child()
 
     elif key_men == 3:
-        payment_process(menu_adult_selection)
+        payment_process()
 
     elif key_men == 4:
         auth_giftcard()
