@@ -17,21 +17,24 @@ def valid_input(prompt):
             print("Invalid input. Please enter a valid number.")
 
 def menu_adult(fun_menu_stored):
-
+    fun_menu_prices = [25,20,5,1]
     print("""
 Our menu for the day is:
-    Pasta: 25 pesos 
-    Sandwich: 20 pesos 
-    Carlos V: 5 pesos
-    Agua: 1 peso for the cup
+1.   Pasta: 25 pesos 
+2.   Sandwich: 20 pesos 
+3.   Carlos V: 5 pesos
+4.   Water: 1 peso for the cup
 """)
     fun_menu_selected = valid_input("Please select as many menu items as you want, end by inputting \"END\"")
-    for i in range(len(fun_menu_stored)):
-        if fun_menu_selected > fun_menu_stored:
-            fun_menu_stored.append(fun_menu_selected)
-        elif fun_menu_selected == "END":
-            return fun_menu_stored
-            break
+    if fun_menu_selected > 0:
+        pasta_amount = fun_menu_prices.count(1)
+        sandwich_amount = fun_menu_prices.count(2)
+        chocolate_amount = fun_menu_prices.count(3)
+        water_amount = fun_menu_prices.count(4)
+        print(pasta_amount, sandwich_amount, chocolate_amount, water_amount) #debug pourposes
+    elif fun_menu_selected == "END":
+        pass
+
 
 
 
@@ -83,6 +86,6 @@ Please input a menu option:
 
 
 def main():
-    pass
+    main_menu()
 
 main()
