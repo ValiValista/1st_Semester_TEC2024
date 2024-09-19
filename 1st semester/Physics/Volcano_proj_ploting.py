@@ -72,7 +72,7 @@ def main():
 
     # Parameters
     angles = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85]  # List of launch angles to simulate
-    rho_air = 1.225  # Air density in kg/m^3
+    original_rho_air = 1.225  # Air density in kg/m^3
     Cd = 0.47  # Drag coefficient for a sphere
 
     while iter1 < 2:  # Adjust the number of iterations as needed
@@ -82,6 +82,9 @@ def main():
         mass = random.randint(1, 100) / 1000  # Random mass in kg
 
         for with_resistance in [True, False]:  # One simulation with and one without air resistance
+            # Reset rho_air based on the air resistance flag
+            rho_air = original_rho_air if with_resistance else 0
+
             resistance_label = "With Air Resistance" if with_resistance else "No Air Resistance"
 
             # Plotting
@@ -99,7 +102,6 @@ def main():
             plt.show()
 
         iter1 += 1
-        rho_air = 0  # Set air density to 0 after first iteration to simulate in a vacuum
 
 
 main()
