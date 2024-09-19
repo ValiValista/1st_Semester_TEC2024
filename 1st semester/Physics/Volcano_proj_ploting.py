@@ -75,7 +75,7 @@ def main():
     original_rho_air = 1.225  # Air density in kg/m^3
     Cd = 0.47  # Drag coefficient for a sphere
 
-    while iter1 < 2:  # Adjust the number of iterations as needed
+    while iter1 < 50:  # Adjust the number of iterations as needed
         # Random generation of parameters
         diameter = random.randint(2, 100) / 1000  # Random diameter in meters
         v0 = random.randint(10, 150)  # Random initial speed in m/s
