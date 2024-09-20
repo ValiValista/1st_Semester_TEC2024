@@ -4,6 +4,7 @@ def check_a_lessthan_b(func_a,func_b):
         return True
     else:
         return False
+
 def main():
     a = int(input("Input number: "))
     b = int(input("Input number: "))
