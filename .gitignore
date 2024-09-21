@@ -7,3 +7,5 @@
 /.idea/
 /.vscode/
 /.idea/1st_Semester_TEC2024-1.iml
+/cmake-build-debug/
+/CMakeLists.txt
