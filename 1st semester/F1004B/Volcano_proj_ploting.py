@@ -6,10 +6,10 @@ import random
 g = 9.81  # Gravity, m/s^2
 
 
-def projectile_motion(func_angle, func_v0, func_mass, func_diameter, func_Cd, rho_air, time_step=0.01,
+def projectile_motion(func_angle, func_v0, func_mass, func_diameter, func_Cd, rho_air, theta_terrain, fun_initHeight, time_step=0.01,
                       air_resistance=True):
     """
-    Simulates the projectile motion with or without air resistance for a given launch angle and initial speed.
+    Simulates the projectile motion with or without air resistance, including variable terrain height.
 
     Parameters:
     func_angle (float): Launch angle in degrees
@@ -18,17 +18,19 @@ def projectile_motion(func_angle, func_v0, func_mass, func_diameter, func_Cd, rh
     func_diameter (float): Diameter of the projectile in meters
     func_Cd (float): Drag coefficient
     rho_air (float): Air density in kg/m^3
+    theta_terrain (float): Terrain slope angle in degrees
     time_step (float): Time step for the simulation in seconds
     air_resistance (bool): Enable or disable air resistance
 
     Returns:
     np.array: Arrays of x and y positions over time
     """
-    # Convert angle to radians
+    # Convert angles to radians
     theta = np.radians(func_angle)
+    theta_terrain_rad = np.radians(theta_terrain)
 
     # Initial conditions
-    x, y = 0, 0  # Initial position
+    x, y = 0, fun_initHeight  # Initial position (y starts at 1500 m height)
     vx, vy = func_v0 * np.cos(theta), func_v0 * np.sin(theta)  # Initial velocity components
 
     A = np.pi * (func_diameter / 2) ** 2  # Cross-sectional area of the projectile
@@ -37,7 +39,7 @@ def projectile_motion(func_angle, func_v0, func_mass, func_diameter, func_Cd, rh
     x_positions = []
     y_positions = []
 
-    while y >= 0:  # Loop until the projectile hits the ground
+    while y >= (fun_initHeight - x * np.tan(theta_terrain_rad)):  # Loop until the projectile hits the descending ground
         x_positions.append(x)
         y_positions.append(y)
 
@@ -58,11 +60,11 @@ def projectile_motion(func_angle, func_v0, func_mass, func_diameter, func_Cd, rh
         ay = -g - (F_drag_y / func_mass)
 
         # Update velocity and position
+        t += time_step
         vx += ax * time_step
         vy += ay * time_step
         x += vx * time_step
         y += vy * time_step
-        t += time_step
 
     return np.array(x_positions), np.array(y_positions)
 
@@ -71,9 +73,14 @@ def main():
     iter1 = 0
 
     # Parameters
+        # Plotting Parameters
     angles = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85]  # List of launch angles to simulate
+    initHeight = 1500  # Initial height, m
+    theta_terrain = 45  # Terrain slope angle, adjustable
+        # Simulation Parameters
     original_rho_air = 1.225  # Air density in kg/m^3
     Cd = 0.47  # Drag coefficient for a sphere
+
 
     while iter1 < 2:  # Adjust the number of iterations as needed
         # Random generation of parameters
@@ -90,15 +97,21 @@ def main():
             # Plotting
             plt.figure(figsize=(10, 6))
             for angle in angles:
-                x, y = projectile_motion(angle, v0, mass, diameter, Cd, rho_air, air_resistance=with_resistance)
+                x, y = projectile_motion(angle, v0, mass, diameter, Cd, rho_air, theta_terrain, initHeight, air_resistance=with_resistance )
                 plt.plot(x, y, label=f'Angle {angle}°')
 
             # Plot formatting
-            plt.title(f'Projectile Motion {resistance_label} (v0={v0} m/s, mass={mass} kg, diameter={diameter} m)')
+            plt.title(f'Projectile Motion {resistance_label} (v0={v0} m/s, mass={mass} kg, diameter={diameter} m), Terrain slope={theta_terrain}°, Cd={Cd}')
             plt.xlabel('Distance (m)')
             plt.ylabel('Height (m)')
             plt.legend()
             plt.grid(True)
+
+            # Plot the descending terrain line
+            x_terrain = np.linspace(0, max(x), 100)
+            y_terrain = initHeight - x_terrain * np.tan(np.radians(theta_terrain))  # Terrain height decreases with x
+            plt.plot(x_terrain, y_terrain, 'r--', label=f'Terrain (slope={theta_terrain}°)')
+
             plt.show()
 
         iter1 += 1
