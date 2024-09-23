@@ -251,3 +251,7 @@ def main():
     print("Results exported to 'projectile_motion_results.csv'.")
 
 main()
+
+
+## TODO
+# 1. Add option for multiple plots using the same initHeight and theta_terrain values, Eg. 5 plots with all the angles, different V0, mass, diameter, Cd, but the same initHeight and theta_terrain.
