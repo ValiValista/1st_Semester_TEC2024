@@ -4,6 +4,8 @@ import random
 import pandas as pd
 import os
 
+from fontTools.misc.cython import returns
+
 # Constants
 g = 9.81  # Gravity, m/s^2
 
@@ -74,6 +76,7 @@ def projectile_motion(func_angle, func_v0, func_mass, func_diameter, func_Cd, rh
     return np.array(x_positions), np.array(y_positions)
 
 
+
 def main():
     # Create a simple menu to choose simulation settings
     print("Projectile Motion Simulation Menu:")
@@ -93,12 +96,11 @@ def main():
     # Parameters
     angles = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85]  # List of launch angles to simulate
     original_rho_air = 1.225  # Air density in kg/m^3
-    output_directory = r'C:\nonprivilegedprogramfiles\plotting'  # Output directory for CSV
 
 
     # Prompt the user for input choice
     use_custom_values = input(
-        "Do you want to input custom values for initial speed, mass, and diameter? (yes/no): ").strip().lower()
+        "Do you want to input custom values for initial speed, mass, diameter, drag coefficient, initial height, and angle of terrain? (yes/no): ").strip().lower()
     randomization_choice = input("Do you want to randomize initHeight, theta_terrain, and Cd for every iteration? (yes/no): ").strip().lower()
 
     if randomization_choice == 'yes':
@@ -129,6 +131,11 @@ def main():
 
 
     results = []  # Store results for CSV
+    final_x_with_resistance = {angle: [] for angle in angles}
+    final_y_with_resistance = {angle: [] for angle in angles}
+    final_x_without_resistance = {angle: [] for angle in angles}
+    final_y_without_resistance = {angle: [] for angle in angles}
+
 
     for i in range(iter1):
 
@@ -186,6 +193,12 @@ def main():
                         'Y Position (m)': y_pos,
                         'Iteration': iteration_num
                     })
+                if with_resistance:
+                    final_x_with_resistance[angle].append(x)
+                    final_y_with_resistance[angle].append(y)
+                else:
+                    final_x_without_resistance[angle].append(x)
+                    final_y_without_resistance[angle].append(y)
             # Plot formatting
             plt.title(f'Projectile Motion {resistance_label}\n(v0={v0} m/s, mass={mass} kg, diameter={diameter} m, Terrain slope={theta_terrain}°, Initial height={initHeight} m, Cd={Cd}, Iteration #{iteration_num})',
                       fontsize=12)
@@ -194,23 +207,46 @@ def main():
             plt.legend(loc='upper right', bbox_to_anchor=(1.25, 1))  # Adjusted legend position
             plt.grid(True)
 
+
             # Plot the descending terrain line (thicker line)
             x_terrain = np.linspace(0, max(x), 100)
             y_terrain = initHeight - x_terrain * np.tan(np.radians(theta_terrain))  # Terrain height decreases with x
             plt.plot(x_terrain, y_terrain, 'r--', linewidth=3, label=f'Terrain (slope={theta_terrain}°')  # Thicker terrain line
 
             # Adjust layout to avoid overlap between elements
-            plt.tight_layout(rect=[0.1, 0.02, 0.8, 1])  # Adjust the layout to accommodate the legend and text
+            plt.tight_layout(rect=[0.12, 0.02, 0.8, 1])  # Adjust the layout to accommodate the legend and text
 
             # Show the plot
             plt.show()
+
     # Create a DataFrame from results and export to CSV
     df = pd.DataFrame(results)
-    # Create the directory if it doesn't exist
-    if not os.path.exists(output_directory):
-        os.makedirs(output_directory)
     df.to_csv('projectile_motion_results.csv', index=False)
 
+    # Final plots for all iterations with air resistance
+    plt.figure(figsize=(12, 8))
+    for angle in angles:
+        for x, y in zip(final_x_with_resistance[angle], final_y_with_resistance[angle]):
+            plt.plot(x, y, label=f'Angle {angle}°')
+    plt.title('Final Projectile Motion with Air Resistance', fontsize=12)
+    plt.xlabel('Distance (m)', fontsize=14)
+    plt.ylabel('Height (m)', fontsize=14)
+    plt.legend(loc='upper right', bbox_to_anchor=(1.25, 1))
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+    # Final plots for all iterations without air resistance
+    plt.figure(figsize=(12, 8))
+    for angle in angles:
+        for x, y in zip(final_x_without_resistance[angle], final_y_without_resistance[angle]):
+            plt.plot(x, y, label=f'Angle {angle}°')
+    plt.title('Final Projectile Motion without Air Resistance', fontsize=12)
+    plt.xlabel('Distance (m)', fontsize=14)
+    plt.ylabel('Height (m)', fontsize=14)
+    plt.legend(loc='upper right', bbox_to_anchor=(1.25, 1))
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
 
     print("Results exported to 'projectile_motion_results.csv'.")
 
