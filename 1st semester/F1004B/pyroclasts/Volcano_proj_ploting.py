@@ -2,9 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 import pandas as pd
-import os
-
-from fontTools.misc.cython import returns
 
 # Constants
 g = 9.81  # Gravity, m/s^2
@@ -102,6 +99,7 @@ def main():
     use_custom_values = input(
         "Do you want to input custom values for initial speed, mass, diameter, drag coefficient, initial height, and angle of terrain? (yes/no): ").strip().lower()
     randomization_choice = input("Do you want to randomize initHeight, theta_terrain, and Cd for every iteration? (yes/no): ").strip().lower()
+    plots_per_height_and_terrain = int(input("Enter the number of plots per height and terrain angle: "))
 
     if randomization_choice == 'yes':
         randomize = True
