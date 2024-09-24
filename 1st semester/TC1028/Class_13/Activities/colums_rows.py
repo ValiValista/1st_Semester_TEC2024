@@ -15,16 +15,32 @@ def fill_matrix(ren, col):
     return matrix
 
 def matrix_print(matrix1):
-    print(matrix1)
-    for column in matrix1:
-        for element in column:
-            print(element, end="\t")
-        print()
+
+    key_men = int(input("""
+1. Print the matrix as a list
+2. Print the matrix as a table
+3. Exit
+Enter the number of your choice:
+"""))
+    if key_men > 0 and key_men == 1:
+        print(matrix1)
+        return True
+    elif key_men > 0 and key_men == 2:
+        for column in matrix1:
+            for element in column:
+                print(element, end="\t")
+            print()
+        return True
+    elif key_men > 0 and key_men == 3:
+        return False
+    else:
+        print("Invalid option")
+        return True
 
 def main():
-
     ren, col = define_matrix_size()
     matrix1 = fill_matrix(ren, col)
-    matrix_print(matrix1)
+    while matrix_print(matrix1):
+        matrix_print(matrix1)
 
 main()
