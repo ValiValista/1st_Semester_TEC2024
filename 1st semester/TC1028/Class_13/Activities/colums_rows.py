@@ -10,7 +10,7 @@ def fill_matrix(ren, col):
     for i in range(ren):
         row=[]
         for j in range (col):
-            row.append(int(input(f"Enter the element for row {i+1} and column {j+1}: ")))
+            row.append(int(input(f"Enter the element for row {i} and column {j}: ")))
         matrix.append(row)
     return matrix
 
