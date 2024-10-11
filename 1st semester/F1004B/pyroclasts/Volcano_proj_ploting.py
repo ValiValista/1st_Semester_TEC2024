@@ -52,7 +52,7 @@ def projectile_motion(func_angle, func_v0, func_mass, func_diameter, func_Cd, rh
 
         if air_resistance:
             # Air resistance force
-            F_drag = 0.5 * func_Cd * A * rho_air * v ** 2
+            F_drag = 0.5 * rho_air * A * func_Cd * v ** 2
             F_drag_x = F_drag * (vx / v)
             F_drag_y = F_drag * (vy / v)
         else:
@@ -132,7 +132,7 @@ def main():
     final_x_with_resistance = {angle: [] for angle in angles}
     final_y_with_resistance = {angle: [] for angle in angles}
     final_x_without_resistance = {angle: [] for angle in angles}
-    final_y_without_resistance = {angle: [] for angle in angles}
+    final_y_without_resistance = {angle: [] for angle    in angles}
 
 
     for i in range(iter1):
