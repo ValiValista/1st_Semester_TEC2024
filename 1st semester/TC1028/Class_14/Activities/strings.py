@@ -21,5 +21,5 @@ print(textolist)
 
 textolist2=" ".join(textolist)
 print(textolist2)
-for word in textolist:
+for word in textolist2:
     print(word)
