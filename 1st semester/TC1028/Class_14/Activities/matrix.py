@@ -3,12 +3,14 @@ Data manipulation with matrices
 """
 
 def inicializa_matriz():
-    matriz=[
-        ["01", "Yolanda Martin",10,60000],
-        ["02", "Roberto Perez",5,23000],
-        ["03", "Paula Gonzalez",12,45000],
-        ["04", "Omar Martinez",5,18000]
-    ]
+    matriz=open("1st semester/TC1028/Class_14/Activities/alumni.txt","a")
+
+    # Put data in
+    matriz.write("Andrea\n")
+    matriz.write("Ernesto\n")
+    matriz.write("Carlos\n")
+    matriz.write("Bauer\n")
+
     return matriz
 
 def imprime_matriz(matriz):
